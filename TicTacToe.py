@@ -66,6 +66,20 @@ def gameon_choice():
     else:
         return False
 
+def win_check():
+    pass
+
+def space_check():
+    pass
+
+def full_board_check():
+    pass
+
+def player_input():
+    pass
+
+
+
 
 game_on = True
 g_listh = "-----------"
