@@ -1,3 +1,5 @@
+from IPython.display import clear_output
+
 
 def display_game(g_listh,g_listv,board):
     print("Here is the current list: ")
@@ -16,13 +18,9 @@ def display_game(g_listh,g_listv,board):
 
 def position_choice():
 
-
-
     choice = 'WRONG'
     acceptable_values = range(1,10)
     within_range = False
-
-
 
     while choice.isdigit() == False or within_range == False:
 
@@ -34,27 +32,39 @@ def position_choice():
         # RANGE CHECK
         if choice.isdigit() == True:
             if int(choice) in acceptable_values:
-                whithin_range = True
+                within_range = True
             else:
                 print("Sorry, the number is out of acceptable range(1-9)")
                 within_range = False
 
     return int(choice)
-position_choice()
+
+
 def replacement_choice(game_list, position):
-    pass
+
+    user_placement = input("Type the position: ")
+    
+    board[position] = user_placement
+    
+    return board
 
 
 def gameon_choice():
-    pass
+    choice = 'wrong'
+
+    while choice not in ['y','n']:
+
+        choice = input("Would you like to keep playing? y or n ")
+        if choice not in ['y','n']:
+            clear_output()
+
+            print('Sorry, I didnt understand. Make sure you choose y or n.')
+
+
 
 game_on = True
 g_listh = "-----------"
 g_listv = "   |   |"
 board = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
-'''
-while game_on:
-    # display_game(g_listh,g_listv,board)
-    position_choice()
-    break
-'''
+
+# while game_on:
