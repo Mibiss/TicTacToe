@@ -28,19 +28,21 @@ def position_choice():
 
         # DIGIT CHECK
         if choice.isdigit() == False:
+            clear_output()
             print("Sorry that is not a digit!")
         # RANGE CHECK
         if choice.isdigit() == True:
             if int(choice) in acceptable_values:
                 within_range = True
             else:
+                clear_output()
                 print("Sorry, the number is out of acceptable range(1-9)")
                 within_range = False
 
     return int(choice)
 
 
-def replacement_choice(game_list, position):
+def replacement_choice(board, position):
 
     user_placement = input("Type the position: ")
     
@@ -59,7 +61,10 @@ def gameon_choice():
             clear_output()
 
             print('Sorry, I didnt understand. Make sure you choose y or n.')
-
+    if choice == "y":
+        return True
+    else:
+        return False
 
 
 game_on = True
@@ -67,4 +72,11 @@ g_listh = "-----------"
 g_listv = "   |   |"
 board = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
-# while game_on:
+while game_on:
+    clear_output()
+    display_game(g_listh,g_listv,board)
+    position = position_choice()
+    board = replacement_choice(board,position)
+    clear_output()
+    display_game(g_listh,g_listv,board)
+    game_on = gameon_choice()
