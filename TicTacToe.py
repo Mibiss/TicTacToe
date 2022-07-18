@@ -1,19 +1,20 @@
 from IPython.display import clear_output
 
 
-def display_game(g_listh,g_listv,board):
-    print("Here is the current list: ")
-    print(g_listv)
-    print(' ' + board[7] + ' | '+ board[8] + ' | ' + board[9])
-    print(g_listv)
-    print(g_listh)
-    print(g_listv)
-    print(' ' + board[4] + ' | '+ board[5] + ' | ' + board[6])
-    print(g_listv)
-    print(g_listh)
-    print(g_listv)
-    print(' ' + board[1] + ' | '+ board[2] + ' | ' + board[3])
-    print(g_listv)
+def display_board(board):
+    clear_output()
+    print("Here is the current game board: ")
+    print("     |     |")
+    print("  " + board[7] + "  |  " + board[8] + "  |  " + board[9])
+    print("     |     |")
+    print("-----------------")
+    print("     |     |")
+    print("  " + board[4] + "  |  " + board[5] + "  |  " + board[6])
+    print("     |     |")
+    print("-----------------")
+    print("     |     |")
+    print("  " + board[1] + "  |  " + board[2] + "  |  " + board[3])
+    print("     |     |")
 
 
 def position_choice():
@@ -82,15 +83,13 @@ def player_input():
 
 
 game_on = True
-g_listh = "-----------"
-g_listv = "   |   |"
-board = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+board = [' ']*10
 
 while game_on:
     clear_output()
-    display_game(g_listh,g_listv,board)
+    display_board(board)
     position = position_choice()
     board = replacement_choice(board,position)
     clear_output()
-    display_game(g_listh,g_listv,board)
+    display_board(board)
     game_on = gameon_choice()
