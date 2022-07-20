@@ -76,9 +76,20 @@ def space_check():
 def full_board_check():
     pass
 
-def player_input():
-    pass
 
+def player_input():
+    marker = ''
+
+    while marker != 'X' and marker != 'O':
+        marker = input('Pick x or o: ').upper()
+
+        player1 = marker
+
+        if player1 == 'X':
+            player2 = 'O'
+        else:
+            player2 = 'X'
+    return (player1, player2)
 
 
 
