@@ -1,8 +1,9 @@
-from IPython.display import clear_output
+
+from random import randint
 
 
 def display_board(board):
-    clear_output()
+
     print("Here is the current game board: ")
     print("     |     |")
     print("  " + board[7] + "  |  " + board[8] + "  |  " + board[9])
@@ -29,47 +30,64 @@ def position_choice():
 
         # DIGIT CHECK
         if choice.isdigit() == False:
-            clear_output()
+
             print("Sorry that is not a digit!")
         # RANGE CHECK
         if choice.isdigit() == True:
             if int(choice) in acceptable_values:
                 within_range = True
             else:
-                clear_output()
+
                 print("Sorry, the number is out of acceptable range(1-9)")
                 within_range = False
 
     return int(choice)
 
 
-def replacement_choice(board, position):
+def place_marker(board, marker, position):
+   
+    board[position] = marker
 
-    user_placement = input("Type the position: ")
-    
-    board[position] = user_placement
-    
     return board
 
 
-def gameon_choice():
+def replay():
     choice = 'wrong'
 
     while choice not in ['y','n']:
 
         choice = input("Would you like to keep playing? y or n ")
+
         if choice not in ['y','n']:
-            clear_output()
 
             print('Sorry, I didnt understand. Make sure you choose y or n.')
+
     if choice == "y":
         return True
     else:
         return False
 
 
-def win_check():
-    pass
+def win_check(marker):
+    wincon = [[board[1],board[2],board[3]],
+              [board[4],board[5],board[6]],  
+              [board[7],board[8],board[9]],
+              [board[1],board[4],board[7]],
+              [board[2],board[5],board[8]],
+              [board[3],board[6],board[9]],  
+              [board[1],board[5],board[9]],
+              [board[7],board[5],board[3]],]
+    
+    a = 0
+
+    for combination in wincon:
+        for i in combination:
+            if combination[i]==marker:
+                a += 1
+    if a == 3:
+        return True
+    else:
+        return False
 
 
 def space_check(board, position):
@@ -108,10 +126,20 @@ def player_input():
     return (player1, player2)
 
 
+def choose_first():
+    x = randint(0,1)
+    if x == 0:
+        return "Player1 goes first!"
+    else:
+        return "Player2 goes first!"
 
 game_on = True
 board = [' ']*10
 
+player_input()
+
+
+"""
 while game_on:
     clear_output()
     display_board(board)
@@ -119,4 +147,5 @@ while game_on:
     board = replacement_choice(board,position)
     clear_output()
     display_board(board)
-    game_on = gameon_choice()
+    game_on = replay()
+"""
