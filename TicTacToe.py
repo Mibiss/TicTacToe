@@ -67,11 +67,19 @@ def gameon_choice():
     else:
         return False
 
+
 def win_check():
     pass
 
-def space_check():
-    pass
+
+def space_check(board, position):
+    mpty = ' '
+
+    if board[position] != mpty:
+        print("This spot is already taken, please choose another one. ")
+    else:
+        return board
+
 
 def full_board_check():
     pass
