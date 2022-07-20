@@ -81,8 +81,16 @@ def space_check(board, position):
         return board
 
 
-def full_board_check():
-    pass
+def full_board_check(board):
+    n = 0
+    for i in board:
+        if i != ' ':
+            n += 1
+        else:
+            pass
+    if n == 9:
+        return "Board is full"
+
 
 
 def player_input():
