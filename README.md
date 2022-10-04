@@ -1,3 +1,10 @@
 # TicTacToe
 
-This repo made for me to try to make Tic Tac Toe game using python and following a course from https://www.udemy.com/
+This repository is about how to make a easy Tic Tac Toe game using python 
+
+
+## Authors
+  - Mihail Paladi
+
+
+course from https://www.udemy.com/
