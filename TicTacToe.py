@@ -81,7 +81,7 @@ def win_check(marker, board):
     for i in wincon:
         if i[0] == i[1] == i[2] == marker:
             return True
-        
+
 
 def space_check(board, position):
     mpty = ' '
@@ -130,11 +130,12 @@ game_on = True
 board = [' ']*10
 
 players = player_input()
+
 print(f"Player1 = {players[0]}")
 print(f"Player2 = {players[1]}")
 
-first_player = choose_first(players[0], players[1])
-second_player = 
+first_player, second_player = choose_first(players[0], players[1])
+
 
 print(first_player + " goes first!")
 
@@ -146,10 +147,10 @@ if __name__ == "__main__":
 
 
 
-        if win_check(marker=p1,board=board) == True:
+        if win_check(marker=players[0],board=board) == True:
             print("Player1 won!")
             break
-        elif win_check(marker=p2,board=board) == True:
+        elif win_check(marker=players[1],board=board) == True:
             print("Player2 won!")
             break
         elif full_board_check(board=board) == True:
