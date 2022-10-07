@@ -68,7 +68,7 @@ def replay():
         return False
 
 
-def win_check(marker):
+def win_check(marker, board):
     wincon = [[board[1],board[2],board[3]],
               [board[4],board[5],board[6]],  
               [board[7],board[8],board[9]],
@@ -77,18 +77,11 @@ def win_check(marker):
               [board[3],board[6],board[9]],  
               [board[1],board[5],board[9]],
               [board[7],board[5],board[3]],]
-    
-    a = 0
 
-    for combination in wincon:
-        for i in combination:
-            if combination[i]==marker:
-                a += 1
-    if a == 3:
-        return True
-    else:
-        return False
-
+    for i in wincon:
+        if i[0] == i[1] == i[2] == marker:
+            return True
+        
 
 def space_check(board, position):
     mpty = ' '
@@ -104,10 +97,8 @@ def full_board_check(board):
     for i in board:
         if i != ' ':
             n += 1
-        else:
-            pass
     if n == 9:
-        return "Board is full"
+        return True
 
 
 def player_input():
@@ -128,30 +119,50 @@ def player_input():
 
 def choose_first(p1,p2):
     lst = [p1,p2]
-    return choice(lst)
+    first = choice(lst)
+    lst.remove(first)
+    second = lst[0]
+
+    return first,second
 
 
 game_on = True
 board = [' ']*10
 
+players = player_input()
+print(f"Player1 = {players[0]}")
+print(f"Player2 = {players[1]}")
 
+first_player = choose_first(players[0], players[1])
+second_player = 
+
+print(first_player + " goes first!")
+
+display_board(board=board)
 
 if __name__ == "__main__":
-    """
+
     while game_on:
-        p1, p2 = player_input()
 
-        first = choose_first(p1, p2)
 
-        display_board(board=board)
+
+        if win_check(marker=p1,board=board) == True:
+            print("Player1 won!")
+            break
+        elif win_check(marker=p2,board=board) == True:
+            print("Player2 won!")
+            break
+        elif full_board_check(board=board) == True:
+            print("The game is a tie!")
+        
+        
 
         pos = position_choice()
         
-        space_check(board=board,position=pos)
+        space_check(board=board, position=pos)
 
-        board = replacement_choice(board=board,marker=first,position=pos)
+        board = replacement_choice(board=board,marker=first_player,position=pos)
 
-        clear_output()
 
         display_board(board=board)
-"""
+        clear_output()
