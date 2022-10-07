@@ -1,5 +1,5 @@
-
-from random import randint
+from random import choice
+from IPython.display import clear_output
 
 
 def display_board(board):
@@ -44,7 +44,7 @@ def position_choice():
     return int(choice)
 
 
-def place_marker(board, marker, position):
+def replacement_choice(board, marker, position):
    
     board[position] = marker
 
@@ -110,42 +110,48 @@ def full_board_check(board):
         return "Board is full"
 
 
-
 def player_input():
     marker = ''
 
     while marker != 'X' and marker != 'O':
-        marker = input('Pick x or o: ').upper()
+        marker = input('Pick X or O: ').upper()
 
-        player1 = marker
+        p1 = marker
 
-        if player1 == 'X':
-            player2 = 'O'
+        if p1 == 'X':
+            p2 = 'O'
         else:
-            player2 = 'X'
-    return (player1, player2)
+            p2 = 'X'
+
+    return (p1, p2)
 
 
-def choose_first():
-    x = randint(0,1)
-    if x == 0:
-        return "Player1 goes first!"
-    else:
-        return "Player2 goes first!"
+def choose_first(p1,p2):
+    lst = [p1,p2]
+    return choice(lst)
+
 
 game_on = True
 board = [' ']*10
 
-player_input()
 
 
-"""
-while game_on:
-    clear_output()
-    display_board(board)
-    position = position_choice()
-    board = replacement_choice(board,position)
-    clear_output()
-    display_board(board)
-    game_on = replay()
+if __name__ == "__main__":
+    """
+    while game_on:
+        p1, p2 = player_input()
+
+        first = choose_first(p1, p2)
+
+        display_board(board=board)
+
+        pos = position_choice()
+        
+        space_check(board=board,position=pos)
+
+        board = replacement_choice(board=board,marker=first,position=pos)
+
+        clear_output()
+
+        display_board(board=board)
 """
