@@ -1,5 +1,6 @@
 from random import choice
 from IPython.display import clear_output
+import numpy as np
 
 
 def display_board(board):
@@ -37,7 +38,6 @@ def position_choice():
             if int(choice) in acceptable_values:
                 within_range = True
             else:
-
                 print("Sorry, the number is out of acceptable range(1-9)")
                 within_range = False
 
@@ -124,7 +124,6 @@ def choose_first(p1,p2):
     second = lst[0]
 
     return first,second
-
 
 game_on = True
 board = [' ']*10
