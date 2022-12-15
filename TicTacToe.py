@@ -1,12 +1,12 @@
 from random import randint
-from iPython.display import clear_output
+import os
 
 
 def display_board(board: list) -> None:
 
     """This is where the game board is displayed"""
 
-    clear_output()
+    os.system("cls")
     print("Here is the current game board: ")
     print("     |     |")
     print("  " + board[7] + "  |  " + board[8] + "  |  " + board[9])
