@@ -30,7 +30,7 @@ def player_choice() -> int:
     position = 0
 
     while position not in [1, 2, 3, 4, 5, 6, 7, 8, 9] or not space_check(
-        board, position
+        board=board, position=position
     ):
         position = int(input("Choose a position: (1-9): "))
 
@@ -84,7 +84,7 @@ def full_board_check(board: list) -> bool:
     """Checks if the board is full"""
 
     for i in range(1, 10):
-        if space_check(board, i):
+        if space_check(board=board, position=i):
             return False
 
     return True
@@ -145,22 +145,22 @@ if __name__ == "__main__":
             if turn == "Player 1":
 
                 # Displaying board
-                display_board(board)
+                display_board(board=board)
 
                 # Picking position and placing the marker
                 position = player_choice()
-                place_marker(board, player1_marker, position)
+                place_marker(board=board, marker=player1_marker, position=position)
 
                 # Checking if Player 1 did a winning move
-                if win_check(player1_marker, board):
-                    display_board(board)
+                if win_check(marker=player1_marker, board=board):
+                    display_board(board=board)
                     print("Player 1 has won! ")
                     game_on = False
 
                 # Checking if the game is a Tie
                 else:
-                    if full_board_check(board):
-                        display_board(board)
+                    if full_board_check(board=board):
+                        display_board(board=board)
                         print("Tie Game! ")
                         game_on = False
 
@@ -170,22 +170,22 @@ if __name__ == "__main__":
             # Turn of the Player 2
             else:
                 # Displaying board
-                display_board(board)
+                display_board(board=board)
 
                 # Picking position and placing the marker
                 position = player_choice()
-                place_marker(board, player2_marker, position)
+                place_marker(board=board, marker=player2_marker, position=position)
 
                 # Checking if Player 1 did a winning move
-                if win_check(player2_marker, board):
-                    display_board(board)
+                if win_check(marker=player2_marker, moard=board):
+                    display_board(board=board)
                     print("Player 2 has won! ")
                     game_on = False
 
                 # Checking if the game is a Tie
                 else:
-                    if full_board_check(board):
-                        display_board(board)
+                    if full_board_check(board=board):
+                        display_board(board=board)
                         print("Tie Game!")
                         game_on = False
 
